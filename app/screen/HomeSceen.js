@@ -36,11 +36,7 @@ export default class HomeScreen extends React.Component {
                         {this.state.count}
                     </Text>
 
-                    <Buttons
-                        title='add'
-                        color='red'
-                        onPress={() => this.AddNumber()}
-                    />
+
 
                 </ View>
 
