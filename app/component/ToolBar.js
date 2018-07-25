@@ -2,7 +2,8 @@ import React from 'react';
 import {
     View, Text, StyleSheet
 } from 'react-native';
-
+import Icon from 'react-native-vector-icons/FontAwesome';
+const myIcon = (<Icon name="rocket" size={30} color="#900" />)
 
 const ToolBar = () => {
     return (
@@ -11,8 +12,8 @@ const ToolBar = () => {
 
                 <View>
                     <Text>
-                        navbar
-                </Text>
+                        {myIcon}
+                    </Text>
                 </View>
 
                 <View>
