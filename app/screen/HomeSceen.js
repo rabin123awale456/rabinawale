@@ -58,7 +58,6 @@ const styles = {
     subcontainer: {
         flexDirection: 'row',
         justifyContent: 'space-around',
-
         width: '100%'
     }
 }
