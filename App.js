@@ -1,8 +1,3 @@
-import React from 'react';
-import Apps from './app/index';
-
-const App = () => (
-    <Apps />
-)
+import App from './app/index';
 
 export default App;

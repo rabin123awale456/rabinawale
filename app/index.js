@@ -1,48 +1,29 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
+import React from 'react';
+import { StyleSheet, Text, View, StatusBar, Platform } from 'react-native';
+import HomeScreen from './screen/HomeScreen';
+import ToolBar from './component/Toolbar';
 
-import React, { Component } from 'react';
-import {
-    Platform,
-    StyleSheet,
-    Text,
-    View,
-    StatusBar
-} from 'react-native';
-import HomeScreen from './screen/HomeSceen';
-import ToolBar from './component/ToolBar';
+import EStyleSheet from 'react-native-extended-stylesheet';
+EStyleSheet.build({
+    $primaryColor: 'black',
+    $secondaryColor: '#FFFFFF',
+    $outline: 1
+})
 
-const instructions = Platform.select({
-    ios: 'Press Cmd+R to reload,\n' +
-        'Cmd+D or shake for dev menu',
-    android: 'Double tap R on your keyboard to reload,\n' +
-        'Shake or press menu button for dev menu',
-});
+const APPBARHIGHT = Platform.OS === 'ios' ? 20 : 20;
 
-const APPBARHEIGHT = Platform === 'ios' ? null : 20;
-export default class Apps extends Component {
+export default class App extends React.Component {
+
     render() {
         return (
-            <View style={styles.container}>
+            <View style={{ flex: 1 }}>
                 <StatusBar
                     backgroundColor='red'
-                    height={APPBARHEIGHT}
                 />
                 <ToolBar />
                 <HomeScreen />
-
             </View>
         );
     }
 }
 
-const styles = {
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
-    }
-}

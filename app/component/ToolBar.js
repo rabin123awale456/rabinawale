@@ -1,68 +1,85 @@
 import React from 'react';
-import {
-    View, Text, StyleSheet
-} from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
-
+import { View, Text, TextInput } from 'react-native';
+import EStyleSheet from 'react-native-extended-stylesheet';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 
 export default class ToolBar extends React.Component {
-    state = {
-        home: "Home",
-        loading: true
-
+    constructor() {
+        super();
+        this.state = {
+            search: false,
+            searchText: ''
+        }
     }
+    onPressSearch = () => {
+        this.setState({ search: !false ? true : false })
+        // if (this.state.search === false) {
+        //     this.setState({ search: true })
 
-    search = () => {
-        this.setState({ home: "about" });
+        //     // alert('true')
+        // } else {
 
+        //     this.setState({ search: false })
+        // }
     }
     render() {
         return (
-            <View style={{ width: '100%', }}>
-                <View style={styles.subcontainer}>
+
+            <View style={{ flex: 1, width: '100%' }}>
+                <View style={styles.container}>
+                    <View style={{ flex: 1 }}>
+                        {this.state.search === false ?
+                            <Icon name="menu" size={30} color="#FFFFFF" />
+                            :
+                            <Icon name="chevron-left" size={30} color="#FFFFFF"
+                                onPress={() => this.setState({ search: false })} />
+                        }
+                    </View>
+
+                    <View style={{ flex: 6 }}>
+                        {this.state.search === false ?
+                            <Text>
+                                HOME
+                     </Text> :
+                            <TextInput
+                                placeholder="search the item"
+                                onChangeText={(e) => this.setState({ searchText: e })}
+                                value={this.state.searchText}
+                            />
+
+                        }
+                    </View>
 
                     <View style={{ flex: 1 }}>
                         <Text>
-                            <Icon name="bars" size={30} color="#900" />
-                        </Text>
-                    </View>
 
-                    <View style={{ flex: 4 }}>
-                        <Text style={{ color: 'white', fontSize: 20 }}>
-                            {this.state.home}
+                            <Icon name="search" size={30} color="#FFFFFF"
+                                onPress={() => this.onPressSearch()} />
                         </Text>
                     </View>
 
                     <View style={{ flex: 1 }}>
                         <Text>
-
-                            <Icon name="search" size={30} color="#900" onPress={() => this.search()} />
+                            <Icon name="notifications" size={30} color="#FFFFFF" />
                         </Text>
                     </View>
-                    <View style={{ flex: 1 }}>
-                        <Text>
-                            <Icon name="bell" size={30} color="#900" />
-                        </Text>
-                    </View>
+                </View>
 
-
-
-
-                </View >
-            </View >
+            </View>
         )
     }
 }
-
-
-const styles = StyleSheet.create({
-    subcontainer: {
-        padding: 9,
+const styles = EStyleSheet.create({
+    container: {
+        backgroundColor: '$primaryColor',
         height: 55,
         flexDirection: 'row',
-        // justifyContent: 'space-around',
+        // justifyContent: 'space-between',
         alignItems: 'center',
-        backgroundColor: 'grey',
+        padding: 5
+    },
+    items: {
+
     }
 })
