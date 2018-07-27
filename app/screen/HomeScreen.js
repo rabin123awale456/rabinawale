@@ -1,12 +1,18 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, FlatList } from 'react-native';
+import {
+    StyleSheet, Text, View, Button,
+    ActivityIndicator,
+
+} from 'react-native';
 import Buttons from '../component/Button';
+import ListItems from '../component/ListItem';
 
 export default class HomeScreen extends React.Component {
     constructor() {
         super();
         this.state = {
-            data: []
+            data: [],
+            loading: true
         }
     }
     componentDidMount() {
@@ -24,21 +30,21 @@ export default class HomeScreen extends React.Component {
 
 
     render() {
-
-
         return (
             <View style={styles.container} >
+                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                    {this.state.loading === true ?
+                        < ActivityIndicator
+                            size="large"
+                            color="red"
+                            animating={this.state.loading}
+                        /> :
+                        null
+                    }
+                </View>
                 <View>
-
-                    <FlatList
+                    <ListItems
                         data={this.state.data}
-                        renderItem={(item) => {
-                            <View style={{ flex: 1, backgroundColor: 'yellow' }}>
-                                <Text>
-                                    {item.name}
-                                </Text>
-                            </View>
-                        }}
                     />
                 </View>
 
@@ -50,7 +56,7 @@ export default class HomeScreen extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'red',
+        backgroundColor: '#ffffff',
         height: 200
     },
 

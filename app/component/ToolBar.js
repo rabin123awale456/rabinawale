@@ -8,78 +8,82 @@ export default class ToolBar extends React.Component {
     constructor() {
         super();
         this.state = {
-            search: false,
-            searchText: ''
+            showHideINputText: false,
+            loading: true
         }
     }
-    onPressSearch = () => {
-        this.setState({ search: !false ? true : false })
-        // if (this.state.search === false) {
-        //     this.setState({ search: true })
+    onPressshowHide = () => {
 
-        //     // alert('true')
-        // } else {
-
-        //     this.setState({ search: false })
-        // }
+        this.setState({ showHideINputText: !false })
+        // this.state.showHideINputText === false ?
+        //     this.setState({ showHideINputText: true })
+        //     :
+        //     this.setState({ showHideINputText: false })
     }
     render() {
         return (
 
-            <View style={{ flex: 1, width: '100%' }}>
-                <View style={styles.container}>
+            <View style={{ width: '100%' }}>
+
+                <View style={styles.design}>
                     <View style={{ flex: 1 }}>
-                        {this.state.search === false ?
-                            <Icon name="menu" size={30} color="#FFFFFF" />
-                            :
-                            <Icon name="chevron-left" size={30} color="#FFFFFF"
-                                onPress={() => this.setState({ search: false })} />
+
+                        {this.state.showHideINputText === false ?
+                            <Text style={{ color: '#ffffff' }}>
+                                <Icon name='menu' size={30} color='#ffffff' />
+                            </Text> :
+                            <Text style={{ color: '#ffffff' }}>
+                                <Icon name='chevron-left' size={30} color='#ffffff'
+                                    onPress={() => this.setState({ showHideINputText: false })}
+                                />
+                            </Text>
                         }
+
+
+
+
                     </View>
 
                     <View style={{ flex: 6 }}>
-                        {this.state.search === false ?
-                            <Text>
-                                HOME
-                     </Text> :
-                            <TextInput
-                                placeholder="search the item"
-                                onChangeText={(e) => this.setState({ searchText: e })}
-                                value={this.state.searchText}
-                            />
-
+                        {this.state.showHideINputText === false ?
+                            <Text style={{ color: '#ffffff' }}>
+                                Home
+                            </Text>
+                            :
+                            <Text style={{ color: '#ffffff' }}>
+                                serarchbar
+                            </Text>
                         }
+
                     </View>
 
                     <View style={{ flex: 1 }}>
-                        <Text>
-
-                            <Icon name="search" size={30} color="#FFFFFF"
-                                onPress={() => this.onPressSearch()} />
+                        <Text style={{ color: '#ffffff' }}>
+                            <Icon name='search' size={30} color='#ffffff'
+                                onPress={() => this.onPressshowHide()} />
                         </Text>
                     </View>
 
                     <View style={{ flex: 1 }}>
-                        <Text>
-                            <Icon name="notifications" size={30} color="#FFFFFF" />
+                        <Text style={{ color: '#ffffff' }}>
+                            <Icon name='notifications' size={30} color='#ffffff' />
                         </Text>
                     </View>
+
                 </View>
-
             </View>
         )
     }
 }
+
+
 const styles = EStyleSheet.create({
-    container: {
+    design: {
         backgroundColor: '$primaryColor',
         height: 55,
         flexDirection: 'row',
-        // justifyContent: 'space-between',
         alignItems: 'center',
-        padding: 5
-    },
-    items: {
 
+        paddingLeft: 15
     }
 })

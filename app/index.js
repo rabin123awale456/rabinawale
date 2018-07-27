@@ -21,7 +21,10 @@ export default class App extends React.Component {
                     backgroundColor='red'
                 />
                 <ToolBar />
-                <HomeScreen />
+                <View style={{ flex: 1 }}>
+                    <HomeScreen />
+                </View>
+
             </View>
         );
     }
